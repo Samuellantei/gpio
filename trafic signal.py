@@ -10,12 +10,14 @@ led3 = LED (24)
 
 def red_led():
 	led1.on()
-	sleep(10)
-	led1.off()
-	sleep(0)
-	
+	led2.off()
+	led3.off()
+	sleep(3)
+		
 def dot():
 	led2.on()
+	led1.off()
+	led3.off()
 	sleep(0.5)
 	led2.off()
 	sleep(0.5)
@@ -27,16 +29,18 @@ def yellow_led():
 	
 def green_led():
 	led3.on()
-	sleep(1)
-	led3.off()
-	sleep(0)
-
-while motion_detector.motion_detected:
+	led1.off()
+	led2.off()
+	
+while True:
+	motion_detector.wait_for_motion()
+	while motion_detector.motion_detected:
 		print "Train Detected"
 		yellow_led()
 		print "Stop Now Train Passing"
-                red_led()
-	else:
-			print "Safe to cross"
-			green_led()
+		while motion_detector.motion_detected:	
+			red_led()
+	print "Safe to cross"
+	green_led()
 
+#GPIO.cleanup()
