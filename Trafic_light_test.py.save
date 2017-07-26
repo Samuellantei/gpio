@@ -20,8 +20,7 @@ def dot():
 	led2.off()
 	sleep(0.5)
 	
-def yellow_led():
-	dot()
+def yellow_led():	dot()
 	dot()
 	dot()
 	
@@ -29,14 +28,15 @@ def green_led():
 	led3.on()
 	sleep(1)
 	led3.off()
-	sleep(0)	
+	sleep(0)
 
-while motion_detector.motion_detected:
+while True:
+	if motion_detector.motion_detected:
 		print "Train Detected"
 		yellow_led()
 		print "Stop Now Train Passing"
                 red_led()
-else:
+	else:
 		print "Safe to cross"
 		green_led()
 
