@@ -1,9 +1,9 @@
-from gpiozero import LED
 from time import sleep
 from gpiozero import MotionSensor
 from gpiozero import LED, Button
 
 motion_detector = MotionSensor(17)
+
 led1 = LED (18)
 led2 = LED (23)
 led3 = LED (24)
@@ -33,17 +33,7 @@ def green_led():
         led1.off()
         led2.off()
 
-def pedestrians():
-	dot()
-	dot()
-	print "Pedestrains crossing-Please wait"
-	dot()
-	dot()
-	dot()
-	dot()
-	red_led()
-
-button.when_pressed = pedestrians 
+button.when_pressed = red_led
 button.when_released = green_led
 
 while True:
@@ -58,11 +48,4 @@ while True:
         green_led()
 
 GPIO.cleanup()
-GPIO.cleanup()
-GPIO.cleanup()
-GPIO.cleanup()
-GPIO.cleanup()
-GPIO.cleanup()
-GPIO.cleanup()
-
 
